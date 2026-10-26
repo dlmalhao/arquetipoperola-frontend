@@ -14,7 +14,6 @@ import ProjectDetail from './features/projects/ProjectDetail.jsx';
 import Contact from './features/contact/contact.jsx';
 import ContactSection from './features/contact_section/contact.jsx';
 import AboutPage from './features/about/about_page.jsx';
-import { SiteContentProvider } from './content/SiteContentContext.jsx';
 
 function App() {
   useEffect(() => {
@@ -22,36 +21,34 @@ function App() {
   }, []);
 
   return (
-    <SiteContentProvider>
-      <Box
-        sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
-        data-aos="fade-up"
-        data-aos-duration="900"
-      >
-        <Navbar />
-        <Box component="main" sx={{ flexGrow: 1 }}>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Landing />
-                  <About />
-                  <Projects />
-                  <ContactSection />
-                </>
-              }
-            />
-            <Route path="/sobre" element={<AboutPage />} />
-            <Route path="/projetos" element={<ProjectsPage />} />
-            <Route path="/projetos/:slug" element={<ProjectDetail />} />
-            <Route path="/contactos" element={<Contact />} />
-            <Route path="*" element={<Landing />} />
-          </Routes>
-        </Box>
-        <Footer />
+    <Box
+      sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+      data-aos="fade-up"
+      data-aos-duration="900"
+    >
+      <Navbar />
+      <Box component="main" sx={{ flexGrow: 1 }}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Landing />
+                <About />
+                <Projects />
+                <ContactSection />
+              </>
+            }
+          />
+          <Route path="/sobre" element={<AboutPage />} />
+          <Route path="/projetos" element={<ProjectsPage />} />
+          <Route path="/projetos/:slug" element={<ProjectDetail />} />
+          <Route path="/contactos" element={<Contact />} />
+          <Route path="*" element={<Landing />} />
+        </Routes>
       </Box>
-    </SiteContentProvider>
+      <Footer />
+    </Box>
   );
 }
 

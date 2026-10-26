@@ -1,14 +1,11 @@
 import './footer.css';
 import Grid from '@mui/material/Grid';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { getStrapiMediaUrl } from '../api/strapi';
-import useSiteContent from '../content/useSiteContent';
+import logo from '../assets/logo.png';
 
 export default function Footer() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { content } = useSiteContent();
-  const logo = getStrapiMediaUrl(content?.logotipo);
 
   const handleAnchorClick = (event, hash) => {
     event.preventDefault();
@@ -35,7 +32,7 @@ export default function Footer() {
         <Grid container size={{ xs: 10, md: 10 }} className="footer__content">
           <Grid item size={{ xs: 12, md: 6 }} className="footer__brand">
             <Link to="/">
-              {logo && <img src={logo} alt={content?.nomeEmpresa || ''} className="footer__logo" />}
+              <img src={logo} alt="Logo do site" className="footer__logo" />
             </Link>
           </Grid>
           <Grid item size={{ xs: 12, md: 6 }} className="footer__links">
@@ -43,9 +40,7 @@ export default function Footer() {
             <Link to="#about" onClick={(event) => handleAnchorClick(event, '#about')}>Sobre Nós</Link>
             <Link to="/projetos">Projetos</Link>
             <Link to="#contact" onClick={(event) => handleAnchorClick(event, '#contact')}>Contacto</Link>
-            {content?.nomeEmpresa && (
-              <p className="footer__copyright">© {new Date().getFullYear()} {content.nomeEmpresa}</p>
-            )}
+            <p className="footer__copyright">© {new Date().getFullYear()} Arquetipo</p>
           </Grid>
         </Grid>
         <Grid size={{ xs: 1, md: 1 }} />

@@ -96,6 +96,10 @@
     object-fit: cover;
 }
 
+.project-detail__gallery .image-gallery-thumbnails-container {
+    text-align: left;
+}
+
 .project-detail__container {
     display: flex;
     flex-direction: column;
@@ -135,10 +139,18 @@
 
 .project-detail__description {
     margin: 0;
+    padding-top: 1rem;
     font-size: 16px;
     line-height: 1.6;
-    display: flex;
-    justify-content: flex-start;
+    border-top: 1px solid var(--color-border);
+    text-align: left;
+}
+
+.project-detail__description h3 {
+    margin: 0 0 0.75rem;
+    color: var(--color-dark-background);
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 .project-detail__description p {
@@ -164,17 +176,88 @@
     padding: 5px 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     border-bottom: 1px solid var(--color-border);
+}
+
+.project-detail__meta .wrapper > .title {
+    flex: 0 0 40%;
+    text-align: left;
+}
+
+.project-detail__meta .wrapper > .description {
+    flex: 1 1 60%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-align: right;
 }
 
 .project-detail__meta .wrapper:last-child {
     border-bottom: none;
 }
 
+.project-detail__section {
+    margin: 1.5rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    text-align: left;
+}
+
+.project-detail__section h3 {
+    margin: 0 0 1rem;
+    color: var(--color-dark-background);
+    text-transform: uppercase;
+}
+
+.project-detail__action.MuiButton-root {
+    width: 270px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: var(--color-white);
+    background-color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.project-detail__action.MuiButton-root:hover {
+    background-color: #222;
+}
+
+.project-detail__back.MuiButton-root {
+    margin-top: 1.5rem;
+}
+
+.project-detail__plans .MuiGrid-container {
+    margin-top: 0;
+}
+
+.project-detail__plan {
+    display: block;
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    color: var(--color-dark-background);
+    background-color: var(--color-light-background);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.project-detail__plan:hover {
+    border-color: var(--color-dark-background);
+}
+
 @media (max-width: 600px) {
     .project-detail__gallery .image-gallery-image {
         height: 330px;
+    }
+
+    .project-detail__action.MuiButton-root {
+        width: 100%;
     }
 }

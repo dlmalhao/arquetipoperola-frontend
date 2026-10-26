@@ -9,7 +9,11 @@ function getApiBaseUrl() {
 }
 
 export async function fetchStrapiResource(path, signal) {
-  const response = await fetch(`${getApiBaseUrl()}${path}`, { signal });
+  const baseUrl = getApiBaseUrl();
+  const normalizedPath = baseUrl.endsWith('/api') && path.startsWith('/api/')
+    ? path.slice(4)
+    : path;
+  const response = await fetch(`${baseUrl}${normalizedPath}`, { signal });
 
   if (!response.ok) {
     throw new Error(`O backend respondeu com o estado ${response.status}.`);

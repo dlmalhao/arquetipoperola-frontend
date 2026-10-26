@@ -15,8 +15,8 @@ Este ficheiro é a fonte de verdade sobre as decisões de estrutura, modelo de d
 
 - Catálogo de arquitetura/imobiliário, para uso B2B — sem grandes proporções, não é preciso otimizar para grande volume de dados.
 - Cliente: Rui Jorge Silva Anjo, empresa ArquétipoPérola (Braga).
-- O frontend consome os dados do Strapi pelo contrato REST documentado abaixo.
-- O backend ainda precisa de ser criado/publicado com esse contrato para a integração funcionar em produção.
+- Projetos, conteúdo das páginas Sobre e Contactos, e parceiros são carregados do Strapi pelos endpoints REST documentados abaixo.
+- O conteúdo da Home permanece estático no frontend.
 
 ## Navegação / rotas
 
@@ -39,40 +39,42 @@ Estrutura principal reduzida a três secções, cada uma como página própria (
 - Cada select deve ter opção "Todas/Todos" para limpar o filtro.
 - Lógica: filtra por tipologia (se selecionada) E por tipo (se selecionado) — os dois filtros são completamente independentes entre si. Como ambas as relações são N:N, um projeto aparece no filtro se tiver pelo menos uma tipologia/tipo que corresponda ao valor selecionado.
 - Precisa de estado vazio tratado (combinação sem resultados).
+- A listagem apresenta 20 projetos por página; os filtros aplicam-se antes da paginação e a página atual é guardada no parâmetro `pagina` da URL.
 - O número de tipologias, tipos de projeto e outros filtros que venham a existir não é fixo — o cliente quer o máximo de poder de customização, ou seja, tudo isto deve poder ser gerido/expandido no Strapi sem alterações ao código do frontend.
 
 ## Modelo de dados (Strapi)
 
-### Contrato REST consumido pelo frontend
+### Endpoints REST consumidos pelo frontend
 
 O frontend usa `VITE_API_URL` como origem do Strapi (sem o sufixo `/api`) e
 consome os endpoints públicos abaixo. As respostas podem seguir o formato do
 Strapi v4 (`data[].attributes`) ou v5 (`data[]` com campos diretos).
 
-- `GET /api/conteudo-do-site?populate=*` — single type `Conteúdo do site`.
-  Campos usados: `nomeEmpresa`, `logotipo`, `tituloHeroi`, `descricaoHeroi`,
-  `imagemHeroi`, `textoBotaoProjetos`, `tituloSobre`, `introducaoSobre`,
-  `destaquesSobre` (componentes com `titulo` e `descricao`),
-  `tituloPaginaSobre`, `descricaoPaginaSobre`, `nomeFundador`, `cargoFundador`,
-  `biografiaFundador`, `imagemFundador`, `tituloParceiros`,
-  `tituloProjetosHome`, `tituloPaginaProjetos`, `tituloContactoHome`, `descricaoContactoHome`,
-  `textoBotaoContactoHome`, `imagemContactoHome`, `tituloContacto`,
-  `descricaoContacto`, `morada`, `email`, `telefone`, `tituloMapa` e `urlMapa`.
 - `GET /api/projetos?populate=*&sort=publishedAt:desc` — projetos publicados.
 - `GET /api/projetos?populate=*&filters[slug][$eq]=:slug` — detalhe de projeto.
+- `GET /api/about?populate=*` — título, texto institucional e informação do fundador para a página Sobre.
+- `GET /api/contacto?populate=*` — título, subtítulo, morada, email, telefone e localização para a página Contactos.
 - `GET /api/parceiros?populate=*&sort=nome:asc` — parceiros publicados.
 
 Cada projeto usa `nome`, `slug`, `descricao`, `localizacao`, `imagemCapa`,
-`imagens`, `tipologias` e `tipos`. Tipologia e tipo de projeto usam o campo
-`nome`; parceiros usam `nome` e `logotipo`. Os tipos de conteúdo e campos
-correspondentes devem ser criados no Strapi com estes identificadores.
-Conceder permissões públicas de leitura para estes endpoints e configurar CORS
-para o domínio do frontend. Ausência de registos é apresentada como empty state;
-falhas de rede, configuração ou permissões são apresentadas como erros.
+`imagens`, `tipologias` e `tipo_de_projetos` (o frontend também aceita o campo
+`tipos`). Descrição pode ser texto ou rich text. Tipologia e tipo de projeto
+usam o campo `nome`; parceiros usam `nome` e `logotipo`. Conceder permissões
+públicas de leitura para estes endpoints e configurar CORS para o domínio do
+frontend. Quando as listas vêm vazias, a página não apresenta itens.
 
-Copiar `.env.example` para `.env.local` e definir `VITE_API_URL` para a origem
-real do backend antes de executar/buildar o frontend. Variáveis `VITE_*` são
-incluídas no bundle público e não devem conter segredos.
+O tipo singleton `Sobre` usa `titulo`, `texto_institucional`, `nome_fundador`,
+`foto_fundador` e `bio_fundador`. Os campos de texto rico são apresentados sem
+conteúdo de substituição quando não estão preenchidos.
+
+O tipo singleton `Contacto` usa `titulo`, `subtitulo`, `morada`, `email`,
+`telefone` e `coordenadas`. A morada, email, telefone e mapa só são apresentados
+quando os respetivos campos estão preenchidos.
+
+O frontend lê `VITE_API_URL` como URL base do Strapi, com ou sem o sufixo `/api`.
+Em desenvolvimento local, `.env.development` aponta para `http://localhost:1337/api`.
+Para produção, definir `VITE_API_URL` no ambiente de build. Variáveis `VITE_*`
+são incluídas no bundle público e não devem conter segredos.
 
 ### Tipologia
 - `id`
@@ -114,7 +116,7 @@ incluídas no bundle público e não devem conter segredos.
 - `id`
 - `nome`
 - `logótipo`
-- Usado na página Sobre, junto com a bio do fundador.
+- Apresentado na página Sobre, junto com a informação da empresa e do fundador, todos carregados do Strapi.
 
 ## Conteúdo de referência (do PDF do cliente)
 

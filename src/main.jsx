@@ -6,7 +6,7 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename="/arquetipoperola-v1">
+    <BrowserRouter basename="/">
       <App />
     </BrowserRouter>
   </StrictMode>,

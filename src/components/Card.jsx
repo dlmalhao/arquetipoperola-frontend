@@ -5,7 +5,7 @@ export default function Card({ name, type, image }) {
     <article className="card-component">
       <div
         className="card-component__image"
-        style={{ backgroundImage: `url(${image})` }}
+        style={image ? { backgroundImage: `url("${image}")` } : undefined}
       />
       <div className="card-component__info">
         <span className="card-component__title">{name}</span>

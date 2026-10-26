@@ -2,11 +2,14 @@
 import './navbar.css';
 import Grid from '@mui/material/Grid';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import logo from '../assets/logo.png';
+import { getStrapiMediaUrl } from '../api/strapi';
+import useSiteContent from '../content/useSiteContent';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { content } = useSiteContent();
+  const logo = getStrapiMediaUrl(content?.logotipo);
 
   const handleToggle = () => setOpen((current) => !current);
   const handleClose = () => setOpen(false);
@@ -50,7 +53,7 @@ export default function Navbar() {
       <Grid item size={{ xs: 10, md: 10 }} className="navbar__inner">
         <div className="navbar__brand">
           <Link to="/" onClick={handleClose}>
-            <img src={logo} alt="Logo do site" className="navbar__logo" />
+            {logo && <img src={logo} alt={content?.nomeEmpresa || ''} className="navbar__logo" />}
           </Link>
         </div>
         <button

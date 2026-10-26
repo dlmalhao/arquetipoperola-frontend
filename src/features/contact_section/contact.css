@@ -1,0 +1,94 @@
+.contact_section {
+    background-color: var(--color-light-background);
+    width: 100%;
+}
+
+.contact_section .title {
+    padding-top: 50px;
+    display: flex;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: clamp(1rem, 1.4vw, 1.5rem);
+}
+
+.contact_section .title h2 {
+    color: var(--color-dark-background);
+}
+
+.contact_section .description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    line-height: 1.5;
+    text-align: start;
+}
+
+.contact_section .contacts_action {
+    display: flex;
+    padding-bottom: 50px;
+}   
+
+.contact_section .contacts_action a{
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: var(--color-dark-background);
+    width: 270px;
+}
+
+.contact_section .contacts_action a:hover {
+    background-color: var(--color-hover);
+    color: var(--color-dark-background);
+}
+
+.contact_section .description p {
+    color: var(--color-dark-background);
+}
+
+.contact_section .contact__image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.contact_section .form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 50px 0;
+}
+
+.contact_section .form .name {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.contact_section .form .name h2 {
+    color: var(--color-dark-background);
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    margin-right: 10px;
+}
+
+.contact_section .form .description {
+    margin-top: 0px;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.contact_section .form .description p {
+    color: var(--color-dark-background);
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    margin-bottom: 0px;
+    font-weight: 100;
+    text-align: start;
+}
+
+.email, .phone, .address {
+    width: 100%;
+}

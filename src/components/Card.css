@@ -1,0 +1,35 @@
+.card-component {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-dark-background);
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 255px;
+}
+
+.card-component__image {
+  width: 100%;
+  padding-top: 65%;
+  background-position: center;
+  background-size: cover;
+  border-radius: 6px;
+}
+
+.card-component__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+  color: var(--color-white);
+}
+
+.card-component__title {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.card-component__type {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.64);
+}

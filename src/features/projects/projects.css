@@ -1,0 +1,105 @@
+.projects {
+    background-color: var(--color-dark-background);
+    width: 100%;
+    padding: 50px 0;
+}
+
+.projects label, p {
+    text-align: start;
+}
+
+.projects.projects-page {
+    background-color: var(--color-light-background);
+}
+
+.projects .title {
+    display: flex;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: clamp(1rem, 1.4vw, 1.5rem);
+}
+
+.projects .title h2 {
+    color: var(--color-light-background);
+    text-align: start;
+}
+
+.projects.projects-page .filters {
+    margin-top: 30px;
+}
+
+.projects.projects-page .title h2 {
+    color: var(--color-dark-background);
+}
+
+.project-card__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.project-card__info span {
+    color: var(--color-light-background);
+}
+
+.projects.projects-page .project-card__info span {
+    color: var(--color-dark-background);
+}
+
+.project-card__info .project-card__title {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.project-card__info .project-card__type {
+    font-size: 14px;
+}
+
+.projects .projects__action {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 50px;
+}
+
+.projects .projects__action a {
+    background-color: var(--color-light-background);
+    color: var(--color-dark-background);
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.projects .projects__action a:hover {
+    background-color: var(--color-hover);
+}
+
+
+.projects .card-component__info {
+    color: var(--color-light-background);
+}
+
+.projects .card-component {
+    background-color: var(--color-dark-background);
+}
+
+.projects.projects-page .card-component__info {
+    color: var(--color-dark-background);
+}
+
+.projects.projects-page .card-component {
+    background-color: var(--color-light-background);
+}
+
+.projects.projects-page .card-component__type {
+    color: var(--color-dark-background);
+}
+
+.project-card__link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+

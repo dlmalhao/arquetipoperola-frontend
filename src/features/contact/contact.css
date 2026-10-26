@@ -1,0 +1,131 @@
+.contact {
+    background-color: var(--color-light-background);
+    width: 100%;
+    padding: 50px 0;
+}
+
+.contact p {
+    text-align: start;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+}
+
+.contact__grid {
+    width: 100%;
+    margin: 0;
+}
+
+.contact__content {
+    width: 100%;
+}
+
+.contact .description {
+    text-align: start;
+    margin-bottom: 50px;
+}
+
+.contact .description p {
+    color: var(--color-dark-background);
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    margin: 0;
+}
+
+.contact .title {
+    display: flex;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: clamp(1rem, 1.4vw, 1.5rem);
+}
+
+.contact .title h2 {
+    color: var(--color-dark-background);
+    margin: 0 0 2rem;
+}
+
+.contact__layout {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.contact__item h3 {
+    margin: 0;
+    color: var(--color-dark-background);
+    font-size: clamp(0.95rem, 1.2vw, 1.2rem);
+    text-transform: uppercase;
+}
+
+.contact__item p,
+.contact__item a {
+    margin: 0;
+    color: var(--color-dark-background);
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    line-height: 1.6;
+    text-decoration: none;
+}
+
+.contact__item a:hover {
+    color: var(--color-hover);
+}
+
+.contact__brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+}
+
+.contact__logo {
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.contact__map-wrapper {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    background: #f3f3f3;
+}
+
+.contact__map-wrapper iframe {
+    width: 100%;
+    min-height: 700px;
+    border: 0;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .contact__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contact__brand {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact {
+        padding: 40px 0;
+    }
+
+    .contact__map-wrapper iframe {
+        min-height: 300px;
+    }
+}

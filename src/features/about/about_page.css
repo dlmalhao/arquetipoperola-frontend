@@ -1,0 +1,66 @@
+.about_page {
+    width: 100%;
+    background-color: var(--color-light-background);
+}
+
+.about_page .title {
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+    text-transform: uppercase;
+    font-size: clamp(1rem, 1.4vw, 1.5rem);
+}
+
+.about_page .description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 20px;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    line-height: 1.5;
+}
+
+.about_page .banner {
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 25px;
+    display: flex;
+    gap: 1rem;
+}   
+
+.about_page .banner .profileImage {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 200px;
+    border-radius: 20px;
+}
+
+.about_page .banner .profileImage img{
+    border-radius: 6px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about_page .banner .info {
+    width: 100%;
+    height: 100%;
+}
+
+.about_page .banner .info .name {
+    text-transform: uppercase;
+    font-size: clamp(1rem, 1.4vw, 1.5rem);
+}
+
+.about_page .banner .info .name p {
+    color: var(--color-dark-background);
+    font-weight: bold;
+    margin: 0;
+}
+
+.about_page .banner .info .description {
+    text-align: start;
+}

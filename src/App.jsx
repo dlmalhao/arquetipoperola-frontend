@@ -11,6 +11,7 @@ import About from './features/about/about.jsx';
 import Projects from './features/projects/projects.jsx';
 import ProjectsPage from './features/projects/ProjectsPage.jsx';
 import ProjectDetail from './features/projects/ProjectDetail.jsx';
+import ImovelDetail from './features/projects/ImovelDetail.jsx';
 import Contact from './features/contact/contact.jsx';
 import ContactSection from './features/contact_section/contact.jsx';
 import AboutPage from './features/about/about_page.jsx';
@@ -43,6 +44,7 @@ function App() {
           <Route path="/sobre" element={<AboutPage />} />
           <Route path="/projetos" element={<ProjectsPage />} />
           <Route path="/projetos/:slug" element={<ProjectDetail />} />
+          <Route path="/projetos/:slug/:imovelSlug" element={<ImovelDetail />} />
           <Route path="/contactos" element={<Contact />} />
           <Route path="*" element={<Landing />} />
         </Routes>

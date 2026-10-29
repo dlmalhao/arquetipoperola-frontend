@@ -13,19 +13,15 @@ const projectsPerPage = 20;
 
 export default function ProjectsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const tipologia = searchParams.get('tipologia') || '';
   const tipo = searchParams.get('tipo') || '';
   const requestedPage = Number(searchParams.get('pagina')) || 1;
   const { data, loading, error } = useStrapiResource(projectsEndpoint);
   const records = Array.isArray(data) ? data : [];
   const projects = records.map(normalizeProject).filter(Boolean);
-  const allTipologies = [...new Set(records.flatMap((project) =>
-    unwrapStrapiRelation(project.tipologias).map((item) => item.nome).filter(Boolean),
-  ))].sort();
   const allProjectTypes = [...new Set(records.flatMap((project) =>
     unwrapStrapiRelation(project.tipos ?? project.tipo_de_projetos).map((item) => item.nome).filter(Boolean),
   ))].sort();
-  const filteredProjects = filterProjects(projects, { tipologia, tipo });
+  const filteredProjects = filterProjects(projects, { tipo });
   const pageCount = Math.ceil(filteredProjects.length / projectsPerPage);
   const currentPage = Math.min(
     Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1,
@@ -72,22 +68,6 @@ export default function ProjectsPage() {
           <hr data-aos="fade-in" data-aos-duration="2000" data-aos-delay="100" />
           <div className="filters" data-aos="fade-in" data-aos-duration="2000" data-aos-delay="200">
             <Grid container spacing={2} sx={{ mb: 4 }}>
-              <Grid item size={{ xs: 12, sm: 6, md: 3 }} className="projects__filter">
-                <label className="projects__filter-label" htmlFor="tipologia-filter">
-                  Tipologia
-                </label>
-                <select
-                  className="projects__filter-select"
-                  id="tipologia-filter"
-                  value={tipologia}
-                  onChange={(event) => handleFilterChange('tipologia', event.target.value)}
-                >
-                  <option value="">Todas as tipologias</option>
-                  {allTipologies.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
-                </select>
-              </Grid>
               <Grid item size={{ xs: 12, sm: 6, md: 3 }} className="projects__filter">
                 <label className="projects__filter-label" htmlFor="type-filter">
                   Tipo de projeto
